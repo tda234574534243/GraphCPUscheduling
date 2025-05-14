@@ -22,42 +22,6 @@ var processes = [{
         arrival_time: 60,
         priority: 4
     },
-    {
-        id: 5,
-        burst_time: 30,
-        arrival_time: 80,
-        priority: 5
-    },
-    {
-        id: 6,
-        burst_time: 90,
-        arrival_time: 90,
-        priority: 6
-    },
-    {
-        id: 7,
-        burst_time: 25,
-        arrival_time: 120,
-        priority: 7
-    },
-    {
-        id: 8,
-        burst_time: 40,
-        arrival_time: 240,
-        priority: 8
-    },
-    {
-        id: 9,
-        burst_time: 90,
-        arrival_time: 260,
-        priority: 9
-    },
-    {
-        id: 10,
-        burst_time: 75,
-        arrival_time: 380,
-        priority: 10
-    }
 ];
 
 let headers = ['Process Id', 'Burst Time', 'Arrival Time', 'Priority'];
