@@ -178,6 +178,18 @@ async function newProposed(flag) {
                 $("#vis_cpu").empty().html(`<span class='fitem'>P${p.id}</span>`)
                 $("#vis_time").empty().append(time)
                 $(".btn").attr("disabled", true)
+
+                let statusMap = {};
+    statusMap[p.id] = "running";
+    for (let proc of processes) {
+        let inReady = readyQueue.some(rp => rp.id === proc.id);
+        let inArranged = arrangedReadyQueue.some(rp => rp.id === proc.id);
+        if (!inReady && !inArranged && proc.id !== p.id) {
+            statusMap[proc.id] = "terminated";
+        }
+    }
+    updateProcessStatusTable(statusMap);
+
                 await new Promise(r => setTimeout(r, 2000));
                 if (stop_flag)
                     break outer;
@@ -267,6 +279,18 @@ async function FCFS(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+            let statusMap = {};
+            statusMap[processQueue[p].id] = "running";
+            for (let proc of processes) {
+                let inReady = readyQueue.some(rp => rp.id === proc.id);
+                let inProcQ = processQueue.some(rp => rp.id === proc.id);
+            if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+                statusMap[proc.id] = "terminated";
+                }
+            }
+            updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -360,6 +384,18 @@ async function SJFNonPre(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+            let statusMap = {};
+            statusMap[processQueue[p].id] = "running";
+            for (let proc of processes) {
+                let inReady = readyQueue.some(rp => rp.id === proc.id);
+                let inProcQ = processQueue.some(rp => rp.id === proc.id);
+                if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+                    statusMap[proc.id] = "terminated";
+                }
+            }
+            updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -450,6 +486,18 @@ async function SJFPre(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+            let statusMap = {};
+            statusMap[processQueue[p].id] = "running";
+            for (let proc of processes) {
+            let inReady = readyQueue.some(rp => rp.id === proc.id);
+            let inProcQ = processQueue.some(rp => rp.id === proc.id);
+            if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+                statusMap[proc.id] = "terminated";
+            }
+            }
+             updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -558,6 +606,16 @@ async function priorityNonPre(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+            let statusMap = {};
+    statusMap[processQueue[p].id] = "running";
+    for (let proc of processes) {
+        let inReady = readyQueue.some(rp => rp.id === proc.id);
+        let inProcQ = processQueue.some(rp => rp.id === proc.id);
+        if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+            statusMap[proc.id] = "terminated";
+        }
+    }
+    updateProcessStatusTable(statusMap);
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -648,6 +706,18 @@ async function priorityPre(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+ let statusMap = {};
+    statusMap[processQueue[p].id] = "running";
+    for (let proc of processes) {
+        let inReady = readyQueue.some(rp => rp.id === proc.id);
+        let inProcQ = processQueue.some(rp => rp.id === proc.id);
+        if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+            statusMap[proc.id] = "terminated";
+        }
+    }
+    updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -788,6 +858,18 @@ async function roundRobin(flag1) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${currentProcess.id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+            let statusMap = {};
+    statusMap[currentProcess.id] = "running";
+    for (let proc of processes) {
+        let inReady = readyQueue.some(rp => rp.id === proc.id);
+        let inProcQ = processQueue.some(rp => rp.id === proc.id);
+        if (!inReady && !inProcQ && proc.id !== currentProcess.id) {
+            statusMap[proc.id] = "terminated";
+        }
+    }
+    updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -920,6 +1002,18 @@ async function LJFNonPre(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+            let statusMap = {};
+    statusMap[processQueue[p].id] = "running";
+    for (let proc of processes) {
+        let inReady = readyQueue.some(rp => rp.id === proc.id);
+        let inProcQ = processQueue.some(rp => rp.id === proc.id);
+        if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+            statusMap[proc.id] = "terminated";
+        }
+    }
+    updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;
@@ -972,29 +1066,38 @@ async function LJFPre(flag) {
         }, 0);
     }
     outer: while (readyQueue.length != 0) {
+        // SỬA: reset processQueue mỗi vòng lặp
+        processQueue = [];
         for (let process in readyQueue) {
             if (readyQueue[process].arrival_time <= time)
                 processQueue.push(readyQueue[process]);
         }
 
+        // SỬA: Nếu không có tiến trình nào đến, nhảy time tới arrival_time nhỏ nhất tiếp theo
         if (processQueue.length === 0) {
+            let minArrival = Number.MAX_VALUE;
+            for (let process in readyQueue) {
+                if (readyQueue[process].arrival_time < minArrival)
+                    minArrival = readyQueue[process].arrival_time;
+            }
             if (ganttLJFPre.length > 0 && ganttLJFPre[ganttLJFPre.length - 1].processId != null) {
                 ganttLJFPre[ganttLJFPre.length - 1].endTime = time;
                 ganttLJFPre.push({
                     processId: null,
                     startTime: time,
-                    endTime: time + 1
+                    endTime: minArrival
                 });
             } else if (ganttLJFPre.length == 0) {
                 ganttLJFPre.push({
                     processId: null,
                     startTime: time,
-                    endTime: time + 1
+                    endTime: minArrival
                 });
             }
-            time++;
+            time = minArrival;
             continue;
         }
+
         max = Number.MIN_VALUE;
         let vis_block = ""
         for (let process in processQueue) {
@@ -1010,6 +1113,18 @@ async function LJFPre(flag) {
             $("#vis_cpu").empty().html(`<span class='fitem'>P${processQueue[p].id}</span>`)
             $("#vis_time").empty().append(time)
             $(".btn").attr("disabled", true)
+
+            let statusMap = {};
+            statusMap[processQueue[p].id] = "running";
+            for (let proc of processes) {
+                let inReady = readyQueue.some(rp => rp.id === proc.id);
+                let inProcQ = processQueue.some(rp => rp.id === proc.id);
+                if (!inReady && !inProcQ && proc.id !== processQueue[p].id) {
+                    statusMap[proc.id] = "terminated";
+                }
+            }
+            updateProcessStatusTable(statusMap);
+
             await new Promise(r => setTimeout(r, 2000));
             if (stop_flag)
                 break outer;

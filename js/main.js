@@ -1,13 +1,13 @@
 var processes = [{
         id: 1,
         burst_time: 24,
-        arrival_time: 0,
+        arrival_time: 1,
         priority: 0
     },
     {
         id: 2,
         burst_time: 3,
-        arrival_time: 0,
+        arrival_time: 2,
         priority: 0
     },
     {
@@ -34,7 +34,7 @@ function createTable() {
         for (obj in processes[p]) {
             row += "<td>" + processes[p][obj] + "</td>";
         }
-        data += "<tr>" + row + "</tr>";
+        data += `<tr id="process_row_${processes[p].id}">${row}</tr>`;
     }
     table.append(`<tbody>${data}</tbody>`);
 }
@@ -369,4 +369,32 @@ function exportProcessDetailPDF(tableId, algoName) {
     });
 
     doc.save(`Process_Detail_${algoName}.pdf`);
+}
+
+function updateProcessStatusTable(statusMap) {
+    $("#process_status_container").show();
+    let html = "";
+    for (let p of processes) {
+        let status = statusMap[p.id] || "waiting";
+        let statusText = "";
+        let statusClass = "";
+        if (status === "running") {
+            statusText = "Running";
+            statusClass = "status-running";
+        } else if (status === "terminated") {
+            statusText = "Terminated";
+            statusClass = "status-terminated";
+        } else {
+            statusText = "Waiting";
+            statusClass = "status-waiting";
+        }
+        html += `<tr class="${statusClass}">
+            <td>P${p.id}</td>
+            <td>${p.burst_time}</td>
+            <td>${p.arrival_time}</td>
+            <td>${p.priority}</td>
+            <td>${statusText}</td>
+        </tr>`;
+    }
+    $("#process_status_table tbody").html(html);
 }

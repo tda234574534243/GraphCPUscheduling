@@ -138,3 +138,18 @@ body {
 		border-width: 0 80px 80px 0;
 	}
 }
+
+.status-running {
+    background-color: #7CFC98 !important; /* Xanh lá */
+    color: #222 !important;
+    font-weight: bold;
+}
+.status-waiting {
+    background-color: #FFD580 !important; /* Cam */
+    color: #222 !important;
+}
+.status-terminated {
+    background-color: #FF6B6B !important; /* Đỏ */
+    color: #fff !important;
+    font-weight: bold;
+}
