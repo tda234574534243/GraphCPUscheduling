@@ -268,6 +268,16 @@ function start() {
     $('html, body').animate({
         scrollTop: $("#result_div").offset().top
     }, 0);
+    
+     $("#gantt_FCFS").parent().toggle($("#fcfs_switch").prop('checked'));
+    $("#gantt_SJFNonPre").parent().toggle($("#sjf_switch").prop('checked'));
+    $("#gantt_SJFPre").parent().toggle($("#srtf_switch").prop('checked'));
+    $("#gantt_LJFNonPre").parent().toggle($("#ljf_switch").prop('checked'));
+    $("#gantt_LJFPre").parent().toggle($("#lrtf_switch").prop('checked'));
+    $("#gantt_PriorityNonPre").parent().toggle($("#priority_switch").prop('checked'));
+    $("#gantt_PriorityPre").parent().toggle($("#priority_pre_switch").prop('checked'));
+    $("#gantt_RoundRobin").parent().toggle($("#roundrobin_switch").prop('checked'));
+    $("#gantt_Proposed").parent().toggle($("#proposed_switch").prop('checked'));
 }
 
 function openGantt(id) {
