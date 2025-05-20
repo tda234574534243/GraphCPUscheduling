@@ -268,7 +268,7 @@ function start() {
     $('html, body').animate({
         scrollTop: $("#result_div").offset().top
     }, 0);
-    
+
      $("#gantt_FCFS").parent().toggle($("#fcfs_switch").prop('checked'));
     $("#gantt_SJFNonPre").parent().toggle($("#sjf_switch").prop('checked'));
     $("#gantt_SJFPre").parent().toggle($("#srtf_switch").prop('checked'));
@@ -278,6 +278,16 @@ function start() {
     $("#gantt_PriorityPre").parent().toggle($("#priority_pre_switch").prop('checked'));
     $("#gantt_RoundRobin").parent().toggle($("#roundrobin_switch").prop('checked'));
     $("#gantt_Proposed").parent().toggle($("#proposed_switch").prop('checked'));
+
+    $("#result_FCFS").toggle($("#fcfs_switch").prop('checked'));
+    $("#result_SJFNonPre").toggle($("#sjf_switch").prop('checked'));
+    $("#result_SJFPre").toggle($("#srtf_switch").prop('checked'));
+    $("#result_LJFNonPre").toggle($("#ljf_switch").prop('checked'));
+    $("#result_LJFPre").toggle($("#lrtf_switch").prop('checked'));
+    $("#result_PriorityNonPre").toggle($("#priority_switch").prop('checked'));
+    $("#result_PriorityPre").toggle($("#priority_pre_switch").prop('checked'));
+    $("#result_RoundRobin").toggle($("#roundrobin_switch").prop('checked'));
+    $("#result_Proposed").toggle($("#proposed_switch").prop('checked'));
 }
 
 function openGantt(id) {

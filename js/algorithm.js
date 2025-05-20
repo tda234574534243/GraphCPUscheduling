@@ -1051,64 +1051,25 @@ var resultTable;
 
 function createResultTable() {
     let resultHeaders = ['Scheduling Algorithm', 'Average Turnaround Time', 'Average Waiting Time'];
-    let results = [{
-            name: "FCFS",
-            avgTA: avgTurnaroundTimeFCFS.toFixed(2),
-            avgWT: avgWaitingTimeFCFS.toFixed(2)
-        },
-        {
-            name: "SJF",
-            avgTA: avgTurnaroundTimeSJFNonPre.toFixed(2),
-            avgWT: avgWaitingTimeSJFNonPre.toFixed(2)
-        },
-        {
-            name: "SJF(Preemptive)",
-            avgTA: avgTurnaroundTimeSJFPre.toFixed(2),
-            avgWT: avgWaitingTimeSJFPre.toFixed(2)
-        },
-        {
-            name: "LJF",
-            avgTA: avgTurnaroundTimeLJFNonPre.toFixed(2),
-            avgWT: avgWaitingTimeLJFNonPre.toFixed(2)
-        },
-        {
-            name: "LJF(Preemptive)",
-            avgTA: avgTurnaroundTimeLJFPre.toFixed(2),
-            avgWT: avgWaitingTimeLJFPre.toFixed(2)
-        },
-        {
-            name: "Priority",
-            avgTA: avgTurnaroundTimePriorityNonPre.toFixed(2),
-            avgWT: avgWaitingTimePriorityNonPre.toFixed(2)
-        },
-        {
-            name: "Priority(Preemptive)",
-            avgTA: avgTurnaroundTimePriorityPre.toFixed(2),
-            avgWT: avgWaitingTimePriorityPre.toFixed(2)
-        },
-        {
-            name: "RoundRobin",
-            avgTA: avgTurnaroundTimeRoundRobin.toFixed(2),
-            avgWT: avgWaitingTimeRoundRobin.toFixed(2)
-        },
-        {
-            name: "Proposed",
-            avgTA: avgTurnAroundTimeNew.toFixed(2),
-            avgWT: avgWaitingTimeNew.toFixed(2)
-        }
+    let results = [
+        { id: "result_FCFS", name: "FCFS", avgTA: avgTurnaroundTimeFCFS.toFixed(2), avgWT: avgWaitingTimeFCFS.toFixed(2) },
+        { id: "result_SJFNonPre", name: "SJF", avgTA: avgTurnaroundTimeSJFNonPre.toFixed(2), avgWT: avgWaitingTimeSJFNonPre.toFixed(2) },
+        { id: "result_SJFPre", name: "SJF(Preemptive)", avgTA: avgTurnaroundTimeSJFPre.toFixed(2), avgWT: avgWaitingTimeSJFPre.toFixed(2) },
+        { id: "result_LJFNonPre", name: "LJF", avgTA: avgTurnaroundTimeLJFNonPre.toFixed(2), avgWT: avgWaitingTimeLJFNonPre.toFixed(2) },
+        { id: "result_LJFPre", name: "LJF(Preemptive)", avgTA: avgTurnaroundTimeLJFPre.toFixed(2), avgWT: avgWaitingTimeLJFPre.toFixed(2) },
+        { id: "result_PriorityNonPre", name: "Priority", avgTA: avgTurnaroundTimePriorityNonPre.toFixed(2), avgWT: avgWaitingTimePriorityNonPre.toFixed(2) },
+        { id: "result_PriorityPre", name: "Priority(Preemptive)", avgTA: avgTurnaroundTimePriorityPre.toFixed(2), avgWT: avgWaitingTimePriorityPre.toFixed(2) },
+        { id: "result_RoundRobin", name: "RoundRobin", avgTA: avgTurnaroundTimeRoundRobin.toFixed(2), avgWT: avgWaitingTimeRoundRobin.toFixed(2) },
+        { id: "result_Proposed", name: "Proposed", avgTA: avgTurnAroundTimeNew.toFixed(2), avgWT: avgWaitingTimeNew.toFixed(2) }
     ];
-    header = "";
-    for (head in resultHeaders) {
-        header += "<th>" + resultHeaders[head] + "</th>";
+    let header = "";
+    for (let head of resultHeaders) {
+        header += "<th>" + head + "</th>";
     }
-    $("#result_table").append(`<thead><tr>${header}</tr></thead>`)
-    data = "";
-    for (r in results) {
-        let row = "";
-        for (obj in results[r]) {
-            row += "<td>" + results[r][obj] + "</td>";
-        }
-        data += "<tr>" + row + "</tr>";
+    $("#result_table").append(`<thead><tr>${header}</tr></thead>`);
+    let data = "";
+    for (let r of results) {
+        data += `<tr id="${r.id}"><td>${r.name}</td><td>${r.avgTA}</td><td>${r.avgWT}</td></tr>`;
     }
     $("#result_table").append(`<tbody>${data}</tbody>`);
 }
