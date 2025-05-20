@@ -3,6 +3,16 @@ var arrangedReadyQueue = [];
 var timeQuanta;
 var stop_flag = false;
 
+var waitingFCFS = [], turnAroundFCFS = [], responseFCFS = [];
+var waitingSJFNonPre = [], turnAroundSJFNonPre = [], responseSJFNonPre = [];
+var waitingSJFPre = [], turnAroundSJFPre = [], responseSJFPre = [];
+var waitingLJFNonPre = [], turnAroundLJFNonPre = [], responseLJFNonPre = [];
+var waitingLJFPre = [], turnAroundLJFPre = [], responseLJFPre = [];
+var waitingPriorityNonPre = [], turnAroundPriorityNonPre = [], responsePriorityNonPre = [];
+var waitingPriorityPre = [], turnAroundPriorityPre = [], responsePriorityPre = [];
+var waitingRR = [], turnAroundRR = [], responseRR = [];
+var waitingProposed = [], turnAroundProposed = [], responseProposed = [];
+
 function readyQueueInit() {
     for (i = 0; i < processes.length; i++) {
         let copiedProcess = Object.assign({}, processes[i]);
@@ -113,10 +123,10 @@ var completionTimeNew = 0;
 
 async function newProposed(flag) {
     readyQueueInit();
-    let turnAroundTime = [];
-    let waitingTime = [];
+    turnAroundProposed = [];
+    waitingProposed = [];
+    responseProposed = [];
     let completionTime = [];
-    let responseTime = [];
     let time = 0;
     if (flag) {
         $("#vis").removeAttr("hidden");
@@ -142,7 +152,7 @@ async function newProposed(flag) {
             prev_time = time;
             if (p.burst_time === getProcessById(p.id).burst_time) {
                 //It means came for the first time
-                responseTime[p.id] = prev_time;
+                responseProposed[p.id] = prev_time;
             }
             if (p.burst_time > timeQuanta) {
                 p.burst_time -= timeQuanta;
@@ -160,7 +170,7 @@ async function newProposed(flag) {
                 time += p.burst_time;
                 completionTime[p.id] = time;
                 let process = getProcessById(p.id);
-                waitingTime[p.id] = completionTime[p.id] - process.burst_time;
+                waitingProposed[p.id] = completionTime[p.id] - process.burst_time;
             }
             if (flag) {
                 $("#vis_name").empty().append("Proposed")
@@ -182,12 +192,12 @@ async function newProposed(flag) {
     $(".btn").removeAttr("disabled")
     stop_flag = false;
     for (i in completionTime) {
-        turnAroundTime[i] = completionTime[i];
+        turnAroundProposed[i] = completionTime[i];
     }
     completionTimeNew = time;
-    avgWaitingTimeNew = calculateAvgTime(waitingTime);
-    avgTurnAroundTimeNew = calculateAvgTime(turnAroundTime);
-    avgResponseTimeNew = calculateAvgTime(responseTime);
+    avgWaitingTimeNew = calculateAvgTime(waitingProposed);
+    avgTurnAroundTimeNew = calculateAvgTime(turnAroundProposed);
+    avgResponseTimeNew = calculateAvgTime(responseProposed);
 }
 
 function calculateAvgTime(waitingTime) {
@@ -206,8 +216,9 @@ var completionTimeFCFS = 0;
 async function FCFS(flag) {
     readyQueueInit();
     let p, min;
-    let turnAroundFCFS = [];
-    let waitingFCFS = [];
+    turnAroundFCFS = [];
+    waitingFCFS = [];
+    responseFCFS = [];
     let processQueue = [];
     let time = 0;
     if (flag) {
@@ -298,8 +309,9 @@ async function SJFNonPre(flag) {
     readyQueueInit();
     let min = Number.MAX_VALUE;
     let p;
-    let turnAroundSJFNonPre = [];
-    let waitingSJFNonPre = [];
+    turnAroundSJFNonPre = [];
+    waitingSJFNonPre = [];
+    responseSJFNonPre = [];
     let processQueue = [];
     let time = 0;
     if (flag) {
@@ -386,9 +398,9 @@ async function SJFPre(flag) {
     readyQueueInit();
     let min = Number.MAX_VALUE;
     let p;
-    let turnAroundSJFPre = [];
-    let waitingSJFPre = [];
-    let responseSJFPre = [];
+    turnAroundSJFPre = [];
+    waitingSJFPre = [];
+    responseSJFPre = [];
     let processQueue = [];
     let completionTime = [];
     let time = 0;
@@ -497,8 +509,8 @@ async function priorityNonPre(flag) {
     let min = Number.MAX_VALUE;
     let p;
     let processQueue = [];
-    let turnAroundPriorityNonPre = [];
-    let waitingPriorityNonPre = [];
+    turnAroundPriorityNonPre = [];
+    waitingPriorityNonPre = [];
     let time = 0;
     if (flag) {
         $("#wq").attr("hidden", true)
@@ -584,9 +596,9 @@ async function priorityPre(flag) {
     readyQueueInit();
     let min = Number.MAX_VALUE;
     let p;
-    let turnAroundPriorityPre = [];
-    let waitingPriorityPre = [];
-    let responsePriorityPre = [];
+    turnAroundPriorityPre = [];
+    waitingPriorityPre = [];
+    responsePriorityPre = [];
     let processQueue = [];
     let completionTime = [];
     let time = 0;
@@ -701,9 +713,9 @@ async function roundRobin(flag1) {
     let processQueue = [];
     let min, p, j, flag;
     let completionTime = [];
-    let turnAroundRR = [];
-    let responseRR = [];
-    let waitingRR = [];
+    turnAroundRR = [];
+    responseRR = [];
+    waitingRR = [];
     let runningQueue = [];
     if (flag1) {
         $("#wq").attr("hidden", true)
@@ -858,8 +870,8 @@ async function LJFNonPre(flag) {
     readyQueueInit();
     let max = Number.MIN_VALUE;
     let p;
-    let turnAroundLJFNonPre = [];
-    let waitingLJFNonPre = [];
+    turnAroundLJFNonPre = [];
+    waitingLJFNonPre = [];
     let processQueue = [];
     let time = 0;
     if (flag) {
@@ -946,9 +958,9 @@ async function LJFPre(flag) {
     readyQueueInit();
     let max = Number.MIN_VALUE;
     let p;
-    let turnAroundLJFPre = [];
-    let waitingLJFPre = [];
-    let responseLJFPre = [];
+    turnAroundLJFPre = [];
+    waitingLJFPre = [];
+    responseLJFPre = [];
     let processQueue = [];
     let completionTime = [];
     let time = 0;
@@ -1303,4 +1315,81 @@ function findBest(checked) {
             });
         }
     }
+}
+
+function displayProcessDetailTable(algorithm, tableSelector = "#process_detail_table") {
+    let processesList = processes.map(p => p.id);
+    let headers = ['Process', 'Waiting Time', 'Turnaround Time', 'Response Time', 'Completion Time'];
+    let html = `<thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>`;
+
+    for (let pid of processesList) {
+        let wt = 0, tat = 0, rt = 0, ct = 0;
+        switch (algorithm) {
+            case 'FCFS':
+                wt = waitingFCFS[pid] ?? 0;
+                tat = turnAroundFCFS[pid] ?? 0;
+                rt = responseFCFS[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'SJF':
+                wt = waitingSJFNonPre[pid] ?? 0;
+                tat = turnAroundSJFNonPre[pid] ?? 0;
+                rt = responseSJFNonPre[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'SJF(Preemptive)':
+                wt = waitingSJFPre[pid] ?? 0;
+                tat = turnAroundSJFPre[pid] ?? 0;
+                rt = responseSJFPre[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'LJF':
+                wt = waitingLJFNonPre[pid] ?? 0;
+                tat = turnAroundLJFNonPre[pid] ?? 0;
+                rt = responseLJFNonPre[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'LJF(Preemptive)':
+                wt = waitingLJFPre[pid] ?? 0;
+                tat = turnAroundLJFPre[pid] ?? 0;
+                rt = responseLJFPre[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'Priority':
+                wt = waitingPriorityNonPre[pid] ?? 0;
+                tat = turnAroundPriorityNonPre[pid] ?? 0;
+                rt = responsePriorityNonPre[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'Priority(Preemptive)':
+                wt = waitingPriorityPre[pid] ?? 0;
+                tat = turnAroundPriorityPre[pid] ?? 0;
+                rt = responsePriorityPre[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'RoundRobin':
+                wt = waitingRR[pid] ?? 0;
+                tat = turnAroundRR[pid] ?? 0;
+                rt = responseRR[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            case 'Proposed':
+                wt = waitingProposed[pid] ?? 0;
+                tat = turnAroundProposed[pid] ?? 0;
+                rt = responseProposed[pid] ?? wt;
+                ct = (processes[pid-1]?.arrival_time ?? 0) + tat;
+                break;
+            default:
+                break;
+        }
+        html += `<tr>
+            <td>P${pid}</td>
+            <td>${wt}</td>
+            <td>${tat}</td>
+            <td>${rt}</td>
+            <td>${ct}</td>
+        </tr>`;
+    }
+    html += '</tbody>';
+    $(tableSelector).html(html);
 }

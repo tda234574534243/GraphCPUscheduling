@@ -288,6 +288,35 @@ function start() {
     $("#result_PriorityPre").toggle($("#priority_pre_switch").prop('checked'));
     $("#result_RoundRobin").toggle($("#roundrobin_switch").prop('checked'));
     $("#result_Proposed").toggle($("#proposed_switch").prop('checked'));
+
+    let algoList = [];
+    if ($("#fcfs_switch").prop('checked')) algoList.push('FCFS');
+    if ($("#sjf_switch").prop('checked')) algoList.push('SJF');
+    if ($("#srtf_switch").prop('checked')) algoList.push('SJF(Preemptive)');
+    if ($("#ljf_switch").prop('checked')) algoList.push('LJF');
+    if ($("#lrtf_switch").prop('checked')) algoList.push('LJF(Preemptive)');
+    if ($("#priority_switch").prop('checked')) algoList.push('Priority');
+    if ($("#priority_pre_switch").prop('checked')) algoList.push('Priority(Preemptive)');
+    if ($("#roundrobin_switch").prop('checked')) algoList.push('RoundRobin');
+    if ($("#proposed_switch").prop('checked')) algoList.push('Proposed');
+
+    if (algoList.length > 0) {
+        $("#process_detail").removeAttr("hidden");
+        $("#process_detail_tables").empty();
+        for (let algoName of algoList) {
+            // Tạo thẻ div/table riêng cho từng thuật toán
+            $("#process_detail_tables").append(`
+                <div class="mb-4">
+                    <h5 class="fw-bold">${algoName}</h5>
+                    <table class="table table-hover" id="process_detail_table_${algoName.replace(/[^a-zA-Z0-9]/g, '')}"></table>
+                </div>
+            `);
+            displayProcessDetailTable(algoName, `#process_detail_table_${algoName.replace(/[^a-zA-Z0-9]/g, '')}`);
+        }
+    } else {
+        $("#process_detail").attr("hidden", true);
+        $("#process_detail_tables").empty();
+    }
 }
 
 function openGantt(id) {
