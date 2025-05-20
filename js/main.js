@@ -1,32 +1,20 @@
 var processes = [{
         id: 1,
-        burst_time: 10,
+        burst_time: 24,
         arrival_time: 0,
-        priority: 1
+        priority: 0
     },
     {
         id: 2,
-        burst_time: 1,
-        arrival_time: 2,
-        priority: 2
+        burst_time: 3,
+        arrival_time: 0,
+        priority: 0
     },
     {
         id: 3,
-        burst_time: 5,
-        arrival_time: 3,
-        priority: 3
-    },
-    {
-        id: 4,
-        burst_time: 1,
-        arrival_time: 1,
-        priority: 4
-    },
-    {
-        id: 5,
-        burst_time: 5,
-        arrival_time: 4,
-        priority: 5
+        burst_time: 3,
+        arrival_time: 0,
+        priority: 0
     }
 ];
 

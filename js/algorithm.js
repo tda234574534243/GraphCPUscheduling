@@ -1297,14 +1297,19 @@ function findBest(checked) {
             minArrivalTime = processes[p].arrival_time;
     }
     for (i in cs) {
-        if (i != cs.length - 1) {
-            cpuUtil.push(ct[i] / (ct[i] + cs[i]));
-            throughput.push(processes.length / (ct[i] + cs[i] - minArrivalTime));
-        } else {
-            cpuUtil.push(ct[i] / (ct[i] + cs[i]));
-            throughput.push(processes.length / (ct[i] + cs[i]));
-        }
+    // Tính tổng thời gian CPU thực sự chạy (burst time)
+        let totalBurst = 0;
+     for (let p of processes) {
+        totalBurst += p.burst_time;
     }
+
+        // CPU Utilization đúng: thời gian bận / tổng thời gian từ lúc bắt đầu đến lúc hoàn tất
+    cpuUtil.push((totalBurst / (ct[i] - minArrivalTime)));
+
+    // Throughput = Số tiến trình / tổng thời gian xử lý
+    throughput.push(processes.length / (ct[i] - minArrivalTime));
+    }
+
     let throughputRank = [];
     let cpuUtilRank = [];
     let wtRank = [];
