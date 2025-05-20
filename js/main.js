@@ -317,6 +317,22 @@ function start() {
         $("#process_detail").attr("hidden", true);
         $("#process_detail_tables").empty();
     }
+
+    for (let algoName of algoList) {
+    // Thêm nút xuất PDF cho từng bảng
+    $("#process_detail_tables").append(`
+        <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0">${algoName}</h5>
+                <button class="btn btn-outline-danger btn-sm" onclick="exportProcessDetailPDF('${algoName.replace(/[^a-zA-Z0-9]/g, '')}', '${algoName}')">
+                    Xuất PDF
+                </button>
+            </div>
+            <table class="table table-hover" id="process_detail_table_${algoName.replace(/[^a-zA-Z0-9]/g, '')}"></table>
+        </div>
+    `);
+    displayProcessDetailTable(algoName, `#process_detail_table_${algoName.replace(/[^a-zA-Z0-9]/g, '')}`);
+    }
 }
 
 function openGantt(id) {
@@ -336,3 +352,21 @@ $("#roundrobin_switch").on('change', () => {
 $("#vis_stop").on('click', () => {
     stop_flag = true;
 })
+
+function exportProcessDetailPDF(tableId, algoName) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.text(`Chi tiết tiến trình - ${algoName}`, 14, 16);
+
+    // Lấy dữ liệu từ bảng
+    doc.autoTable({
+        html: `#process_detail_table_${tableId}`,
+        startY: 22,
+        theme: 'grid',
+        headStyles: { fillColor: [41, 128, 185] },
+        styles: { font: 'helvetica', fontSize: 10 }
+    });
+
+    doc.save(`Process_Detail_${algoName}.pdf`);
+}
