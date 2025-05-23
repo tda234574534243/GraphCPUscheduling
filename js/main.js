@@ -375,7 +375,16 @@ function updateProcessStatusTable(statusMap) {
     $("#process_status_container").show();
     let html = "";
     for (let p of processes) {
-        let status = statusMap[p.id] || "waiting";
+        let status = statusMap[p.id];
+        // Nếu không có trong readyQueue và không phải process đang chạy, thì đã terminated
+        let inReady = readyQueue.some(rp => rp.id === p.id);
+        if (!status) {
+            if (!inReady) {
+                status = "terminated";
+            } else {
+                status = "waiting";
+            }
+        }
         let statusText = "";
         let statusClass = "";
         if (status === "running") {

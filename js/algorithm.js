@@ -201,6 +201,13 @@ async function newProposed(flag) {
             });
         }
     }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
+    }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
     for (i in completionTime) {
@@ -316,6 +323,13 @@ async function FCFS(flag) {
         processQueue.splice(0, processQueue.length);
 
     }
+    if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
+    }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
     completionTimeFCFS = time;
@@ -416,6 +430,13 @@ async function SJFNonPre(flag) {
                 readyQueue.splice(pro, 1);
         }
         processQueue.splice(0, processQueue.length);
+    }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
     }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
@@ -533,6 +554,13 @@ async function SJFPre(flag) {
         }
         processQueue.splice(p, processQueue.length);
     }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
+    }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
     for (p in processes) {
@@ -636,6 +664,13 @@ async function priorityNonPre(flag) {
                 readyQueue.splice(pro, 1);
         }
         processQueue.splice(0, processQueue.length);
+    }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
     }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
@@ -753,6 +788,13 @@ async function priorityPre(flag) {
             readyQueue.splice(index, 1);
         }
         processQueue.splice(0, processQueue.length);
+    }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
     }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
@@ -929,6 +971,13 @@ async function roundRobin(flag1) {
         }
         processQueue.shift();
     }
+     if (flag1) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
+    }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
     for (p in processes) {
@@ -1034,6 +1083,13 @@ async function LJFNonPre(flag) {
                 readyQueue.splice(pro, 1);
         }
         processQueue.splice(0, processQueue.length);
+    }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
     }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
@@ -1159,6 +1215,13 @@ async function LJFPre(flag) {
             }
         }
         processQueue.splice(p, processQueue.length);
+    }
+     if (flag) {
+    updateFinalProcessStatus();
+    // Cập nhật lại giao diện lần cuối cùng
+    $("#vis_time").empty().append(time);
+    $("#vis_cpu").empty().html(`<span class='fitem'>-</span>`);
+    $("#vis_rq").empty().html('');
     }
     $(".btn").removeAttr("disabled")
     stop_flag = false;
@@ -1507,4 +1570,15 @@ function displayProcessDetailTable(algorithm, tableSelector = "#process_detail_t
     }
     html += '</tbody>';
     $(tableSelector).html(html);
+}
+
+function updateFinalProcessStatus() {
+    let statusMap = {};
+    for (let proc of processes) {
+        let inReady = readyQueue.some(rp => rp.id === proc.id);
+        if (!inReady) {
+            statusMap[proc.id] = "terminated";
+        }
+    }
+    updateProcessStatusTable(statusMap);
 }
