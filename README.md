@@ -1,10 +1,9 @@
-# GraphCPUscheduling
-
 ## Giới thiệu
 Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, Round Robin, ...) với giao diện trực quan, hỗ trợ nhập tiến trình, xem Gantt chart, và các chỉ số thời gian.
 
 ## Yêu cầu hệ thống
 - Visual Studio Code 
+  ![Giao diện chương trình](images/icon.png) 
 - Cài live preview extension (hoặc các công cụ hỗ trợ debug web)
 
 ## Hướng dẫn chạy chương trình
