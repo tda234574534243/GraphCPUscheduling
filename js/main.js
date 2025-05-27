@@ -1,21 +1,14 @@
-var processes = [{
-        id: 1,
-        burst_time: 24,
-        arrival_time: 1,
-        priority: 0
-    },
-    {
-        id: 2,
-        burst_time: 3,
-        arrival_time: 2,
-        priority: 0
-    },
-    {
-        id: 3,
-        burst_time: 3,
-        arrival_time: 0,
-        priority: 0
-    }
+var processes = [
+    { id: 1, burst_time: 24, arrival_time: 1, priority: 0 },
+    { id: 2, burst_time: 3, arrival_time: 2, priority: 0 },
+    { id: 3, burst_time: 3, arrival_time: 0, priority: 0 },
+    { id: 4, burst_time: 7, arrival_time: 3, priority: 0 },
+    { id: 5, burst_time: 12, arrival_time: 5, priority: 0 },
+    { id: 6, burst_time: 6, arrival_time: 4, priority: 0 },
+    { id: 7, burst_time: 9, arrival_time: 6, priority: 0 },
+    { id: 8, burst_time: 5, arrival_time: 7, priority: 0 },
+    { id: 9, burst_time: 8, arrival_time: 8, priority: 0 },
+    { id: 10, burst_time: 4, arrival_time: 9, priority: 0 }
 ];
 
 let headers = ['Process Id', 'Burst Time', 'Arrival Time', 'Priority'];
