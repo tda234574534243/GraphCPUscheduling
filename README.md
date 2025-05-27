@@ -32,6 +32,8 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
      ![chương trình](images/cap6.JPG)
      ![chương trình](images/cap7.JPG)
      ![chương trình](images/cap8.JPG)
+## Link demo
+- (https://tda234574534243.github.io/GraphCPUscheduling/)
 ## Tùy chỉnh & Build lại
 - **Chỉnh sửa giao diện:** Sửa file CSS trong `css/style.css`.
 - **Chỉnh sửa thuật toán:** Sửa file JS trong `js/`.
