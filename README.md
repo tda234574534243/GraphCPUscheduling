@@ -15,6 +15,7 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
      git clone https://github.com/yourusername/GraphCPUscheduling.git
      ```
    - Hoặc tải file ZIP và giải nén.
+   - Sau đó chạy debug web trong Visual Studio Code
 
 **Cách 2. Chạy chương trình:**
    - Mở file `index.html` trong thư mục dự án bằng trình duyệt (double click hoặc chuột phải chọn "Open with...").
@@ -29,4 +30,7 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
 ## Tùy chỉnh & Build lại
 - **Chỉnh sửa giao diện:** Sửa file CSS trong `css/style.css`.
 - **Chỉnh sửa thuật toán:** Sửa file JS trong `js/`.
+## Những issues cần cải thiện
+- **Cập nhật thêm dữ liệu từ các tiến trình thật**:
+- **Thêm yếu tố i/o time**:
 ---
