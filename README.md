@@ -24,10 +24,10 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
    - Nhập danh sách tiến trình (Burst Time, Arrival Time, Priority, ...).
      ![chương trình](images/cap2.JPG)
    - Chọn thuật toán lập lịch muốn mô phỏng.
-     ![chương trình](images/cap3.JPG)
+     ![chương trình](images/cap3.jpg)
    - Nhấn nút "Tính toán thuật toán" để xem kết quả, Gantt chart và các chỉ số thời gian.
-     ![chương trình](images/cap4.JPG)
-     ![chương trình](images/cap5.JPG)   
+     ![chương trình](images/cap4.jpg)
+     ![chương trình](images/cap5.jpg)   
    - Có thể thêm, sửa, xóa tiến trình trực tiếp trên giao diện.
      ![chương trình](images/cap6.JPG)
      ![chương trình](images/cap7.JPG)
