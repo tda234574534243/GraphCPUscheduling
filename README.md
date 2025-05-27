@@ -33,4 +33,13 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
 ## Những issues cần cải thiện
 - **Cập nhật thêm dữ liệu từ các tiến trình thật** 
 - **Thêm yếu tố i/o time**
+## Nguồn gốc mã nguồn
+- Dự án này sử dụng mã nguồn từ [Mukul Agrawal](https://github.com/mukul2310/cpu-scheduler-visualiser) theo giấy phép MIT.
+## Chỉnh sửa mã nguồn
+- Bổ sung giao diện tiếng Việt
+- Sửa lỗi thuật toán chạy ưu tiên sai tiên trình ở Ready Queue
+- Tối ưu thuật toán, cải thiện giao diện mô phỏng.
+- Cập nhật thêm thông số chi tiết từng tiến trình
+- Cập nhật xuất nhập file pdf cần thiết
+- Giao diện chỉnh sửa sao cho gọn gàng, xuất ra màn hình thuật toán cần thiết
 ---
