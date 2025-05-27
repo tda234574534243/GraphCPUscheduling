@@ -9,14 +9,14 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
 
 ## Hướng dẫn chạy chương trình
 
-1. **Clone hoặc tải mã nguồn về máy:**
+**Cách 1. Clone hoặc tải mã nguồn về máy:**
    - Clone qua git:
      ```
      git clone https://github.com/yourusername/GraphCPUscheduling.git
      ```
    - Hoặc tải file ZIP và giải nén.
 
-2. **Chạy chương trình:**
+**Cách 2. Chạy chương trình:**
    - Mở file `index.html` trong thư mục dự án bằng trình duyệt (double click hoặc chuột phải chọn "Open with...").
    - Không cần chạy server, chỉ cần mở file HTML.
 
