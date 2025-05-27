@@ -3,8 +3,8 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
 
 ## Yêu cầu hệ thống
 - Visual Studio Code 
-  ![Giao diện chương trình](images/icon.png) 
-- Cài live preview extension (hoặc các công cụ hỗ trợ debug web)
+- Cài live preview extension (hoặc các công cụ hỗ trợ debug web
+- ![chương trình](images/cap1.JPG)
 
 ## Hướng dẫn chạy chương trình
 
