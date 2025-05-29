@@ -4,7 +4,7 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
 ## Yêu cầu hệ thống
 - Visual Studio Code 
 - Cài live preview extension (hoặc các công cụ hỗ trợ debug web)
-- ![chương trình](images/cap1.JPG)
+   ![chương trình](images/cap1.JPG)
 
 ## Hướng dẫn chạy chương trình
 
@@ -22,15 +22,15 @@ Dự án mô phỏng các thuật toán lập lịch CPU (FCFS, SJF, Priority, R
 
 3. **Sử dụng chương trình:**
    - Nhập danh sách tiến trình (Burst Time, Arrival Time, Priority, ...).
-   - ![chương trình](images/cap2.jpg)
+     ![chương trình](images/cap2.jpg)
    - Chọn thuật toán lập lịch muốn mô phỏng.
-   - ![chương trình](images/cap3.jpg)
+     ![chương trình](images/cap3.jpg)
    - Nhấn nút "Tính toán thuật toán" để xem kết quả, Gantt chart và các chỉ số thời gian.
-   - ![chương trình](images/cap4.jpg)
-   - ![chương trình](images/cap5.JPG)   
+     ![chương trình](images/cap4.jpg)
+     ![chương trình](images/cap5.JPG)   
    - Có thể thêm, sửa, xóa tiến trình trực tiếp trên giao diện.
-   - ![chương trình](images/cap6.JPG)
-   - ![chương trình](images/cap7.JPG)
+     ![chương trình](images/cap6.JPG)
+     ![chương trình](images/cap7.JPG)
      ![chương trình](images/cap8.JPG)
 ## Link demo
 - (https://tda234574534243.github.io/GraphCPUscheduling/)
